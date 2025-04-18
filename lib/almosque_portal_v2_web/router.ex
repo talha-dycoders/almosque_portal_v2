@@ -17,7 +17,8 @@ defmodule AlmosquePortalV2Web.Router do
   scope "/", AlmosquePortalV2Web do
     pipe_through :browser
 
-    get "/", PageController, :home
+    get "/huuu", PageController, :home
+    
   end
 
   # Other scopes may use custom stacks.
