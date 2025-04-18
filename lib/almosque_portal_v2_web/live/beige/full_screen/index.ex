@@ -1,4 +1,4 @@
-defmodule AlmosquePortalV2Web.Gold.FullScreen do
+defmodule AlmosquePortalV2Web.Beige.FullScreen do
   use AlmosquePortalV2Web, :live_view
 
   @prayer_times [
