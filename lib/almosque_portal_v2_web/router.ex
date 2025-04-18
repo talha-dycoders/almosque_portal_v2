@@ -20,6 +20,7 @@ defmodule AlmosquePortalV2Web.Router do
     get "/", PageController, :home
     live "/gold/full_screen", Gold.FullScreen
     live "/gold/split_screen", Gold.SplitScreen
+    live "/beige/full_screen", Beige.FullScreen
   end
 
   # Other scopes may use custom stacks.
