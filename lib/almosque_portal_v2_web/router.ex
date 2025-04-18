@@ -18,6 +18,7 @@ defmodule AlmosquePortalV2Web.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    live "/gold/full_screen", Gold.FullScreen
   end
 
   # Other scopes may use custom stacks.
