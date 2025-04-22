@@ -18,8 +18,8 @@ defmodule AlmosquePortalV2Web.Router do
     pipe_through :browser
 
     get "/", PageController, :home
-    live "/gold/full_screen", Gold.FullScreen
-    live "/gold/split_screen", Gold.SplitScreen
+    
+    live "/beige/split_screen", Biege.SplitScreen
   end
 
   # Other scopes may use custom stacks.

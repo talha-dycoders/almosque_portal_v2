@@ -1,4 +1,4 @@
-defmodule AlmosquePortalV2Web.Gold.SplitScreen do
+defmodule AlmosquePortalV2Web.Biege.SplitScreen do
   use AlmosquePortalV2Web, :live_view
 
   @prayer_times [
