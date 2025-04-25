@@ -4,31 +4,37 @@ defmodule AlmosquePortalV2Web.Orange.FullScreen do
   @prayer_times [
     %{
       namaz_name: "FAJA",
+      arabic_name: "الفجر",
       start_time: "04:30 am",
       iqama_time: "05:00 am"
     },
     %{
       namaz_name: "ZUHAR",
+      arabic_name: "الظهر",
       start_time: "12:15 pm",
       iqama_time: "01:00 pm"
     },
     %{
       namaz_name: "ASR",
+      arabic_name: "العصر",
       start_time: "03:45 pm",
       iqama_time: "04:30 pm"
     },
     %{
       namaz_name: "MAGHRIB",
+      arabic_name: "المغرب",
       start_time: "06:20 pm",
       iqama_time: "06:30 pm"
     },
     %{
       namaz_name: "ISHA",
+      arabic_name: "العشاء",
       start_time: "07:45 pm",
       iqama_time: "08:15 pm"
     },
     %{
       namaz_name: "JUM'AH",
+      arabic_name: "الجمعة",
       start_time: "12:30 pm",
       iqama_time: "01:15 pm"
     }
