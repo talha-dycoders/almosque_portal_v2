@@ -1,0 +1,202 @@
+<div class="w-full h-screen overflow-hidden font-sans"
+  style="background: linear-gradient(1deg, rgb(224, 221, 217) 0%, rgb(231, 229, 227) 64%);">
+  <!-- #6f3635 -->
+
+  <div class="grid grid-cols-[420px_1fr_420px] h-[94%]">
+
+    <div class="grid grid-cols-1 grid-rows-3 justify-center items-start gap-4 pl-12">
+      <div class="flex items-center justify-start h-full">
+        <img src="/images/logo.png" alt="logo" class="w-[150px] h-[150px]">
+      </div>
+      <div class="bg-[#6f3635] w-[250px] h-[250px] rounded-lg flex flex-col items-center gap-2">
+        <h2 class="text-white text-2xl font-medium text-center py-1 uppercase">Scan To</h2>
+        <img src="/images/qr_frame.svg" alt="qr_code" class="w-[160px] h-[160px]">
+        <h2 class="text-white text-2xl font-medium text-center py-1 uppercase">Stay Connected</h2>
+      </div>
+    </div>
+
+    <div class=" h-full flex-grow flex justify-center">
+      <div class="flex flex-col flex-grow w-full h-full h-full">
+        <h1 class="text-black text-2xl font-medium text-center py-3">Masjid Noor (D)</h1>
+        <div class="h-full flex-col flex justify-between items-center">
+
+          <!-- time & next time card -->
+          <div class="grid grid-cols-[1fr_250px_1fr] gap-4 w-full">
+            <div></div>
+            <div
+              class="w-full flex-grow flex justify-center items-center rounded-3xl z-10 relative h-fit bg-[#6f3635] text-white relative top-[32px]">
+              <div class="flex flex-col justify-center items-center">
+                <div class="flex items-baseline justify-center gap-2 py-4">
+                  <h1 class="text-6xl font-medium">06:20</h1>
+                  <h1 class="text-2xl font-medium uppercase">am</h1>
+                </div>
+                <div class="flex items-center justify-center flex-col gap-2 text-xl border-t-2 border-white px-2">
+                  NEXT IQAMAH IN
+                  <div class="flex items-center justify-center gap-2">
+                    <div class="flex items-baseline justify-center">
+                      <h1 class="text-5xl font-medium">02</h1>
+                      <h1 class="text-xl font-medium uppercase">HR</h1>
+                    </div>
+                    <div class="flex items-baseline justify-center">
+                      <h1 class="text-5xl font-medium">10</h1>
+                      <h1 class="text-xl font-medium uppercase">MIN</h1>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div></div>
+          </div>
+
+          <!-- Iqama times table -->
+          <div class="grid grid-cols-[100px_1fr_100px] gap-4 w-full h-full flex-grow mb-4 px-6">
+            <div></div>
+            <div class="border-2 border-[#6f3635] w-full h-full rounded-3xl">
+
+              <table class="h-full w-full bg-white rounded-3xl">
+                <thead class="text-2xl font-medium">
+                  <tr class="h-[4%]">
+                    <th>
+                      <h2>
+                        STARTS
+                      </h2>
+                    </th>
+                    <th>
+
+                    </th>
+                    <th>
+                      <h2>
+                        IQAMAH
+                      </h2>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class=" overflow-hidden">
+                  <%= for {prayer_time, index} <- Enum.with_index(@prayer_times) do %>
+                    <tr class={["h-[50px]", if(prayer_time==@active_prayer_time, do: "bg-[#6f3635] text-white" ,
+                      else: "bg-transparent text-black" )]}>
+                      <td class="border-r-2 border-[#6f3635] rounded-l-3xl h-[50px]">
+                        <div class="flex items-baseline justify-center">
+                          <h1 class="text-5xl font-medium">
+                            <%= time_part(prayer_time.start_time) %>
+                          </h1>
+                          <h1 class="text-2xl font-medium uppercase">
+                            <%= am_pm_part(prayer_time.start_time) %>
+                          </h1>
+                        </div>
+                      </td>
+                      <td class="h-[50px]">
+                        <h2 class="text-2xl font-medium text-center flex justify-between items-center gap-2 px-4">
+                          <div>
+                            <%= prayer_time.namaz_name %>
+                          </div>
+                          <div>
+                            <%= prayer_time.arabic_name %>
+                          </div>
+                        </h2>
+                      </td>
+                      <td class="border-l-2 border-[#6f3635] rounded-r-3xl h-[50px]">
+                        <div class="flex items-baseline justify-center">
+                          <h1 class="text-5xl font-medium">
+                            <%= time_part(prayer_time.iqama_time) %>
+                          </h1>
+                          <h1 class="text-2xl font-medium uppercase">
+                            <%= am_pm_part(prayer_time.iqama_time) %>
+                          </h1>
+                        </div>
+                      </td>
+                    </tr>
+                    <% end %>
+
+                      <tr class="h-[4%] relative top-3">
+                        <td></td>
+                        <td class="flex gap-2 justify-between items-center">
+                          <div>
+                            <div class="flex items-baseline text-black">
+                              <h1 class="text-5xl font-medium">06:10</h1>
+                              <h1 class="text-2xl font-medium">AM</h1>
+                            </div>
+                            <h3 class="text-xl font-medium text-center">SUNRISE</h3>
+                          </div>
+                          <div>
+                            <div class="flex items-baseline text-black">
+                              <h1 class="text-5xl font-medium">06:00</h1>
+                              <h1 class="text-2xl font-medium">PM</h1>
+                            </div>
+                            <h3 class="text-xl font-medium text-center">SUNSET</h3>
+                          </div>
+                        </td>
+                        <td></td>
+                      </tr>
+
+                </tbody>
+              </table>
+            </div>
+            <div></div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="grid grid-cols-1 grid-rows-3 justify-center items-start gap-4 pl-12">
+      <div class="flex items-center justify-end pr-4 text-black mt-2">
+        <div class="flex items-center gap-1 flex-col">
+          <h1 class="text-2xl font-medium uppercase">17, JUMMDA</h1>
+          <h1 class="text-2xl font-medium">AL-AWWAL</h1>
+          <h1 class="text-2xl font-medium border-b border-black pb-2 px-3">SUNDAY, MAY 17</h1>
+        </div>
+      </div>
+      <div class="bg-[#6f3635] w-[250px] h-[270px] rounded-lg flex flex-col items-center gap-2">
+        <h2 class="text-white text-3xl font-medium text-center py-3 border-b border-white pb-2 px-3">JUMMAH
+        </h2>
+
+        <div class="flex items-baseline">
+          <h1 class="text-white text-5xl font-medium">03:00</h1>
+          <h1 class="text-white text-2xl font-medium">PM</h1>
+        </div>
+        <h3 class="text-white text-xl font-medium text-center">JUMMAH 1</h3>
+
+        <div class="flex items-baseline">
+          <h1 class="text-white text-5xl font-medium">03:00</h1>
+          <h1 class="text-white text-2xl font-medium">PM</h1>
+        </div>
+        <h3 class="text-white text-xl font-medium text-center py-3">JUMMAH 2</h3>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="footer w-full h-[58px]">
+    <div class="flex items-center px-2 h-full">
+      <div class="flex items-center justify-center gap-2 w-full h-full overflow-hidden">
+        <div class="whitespace-nowrap animate-marquee">
+          <h1 class="text-black text-2xl font-medium inline-block">As-salam-Alaikum all Muslims</h1>
+        </div>
+      </div>
+      <style>
+        @keyframes marquee {
+          0% {
+            transform: translateX(100%);
+          }
+
+          100% {
+            transform: translateX(-100%);
+          }
+        }
+
+        .animate-marquee {
+          animation: marquee 15s linear infinite;
+        }
+      </style>
+    </div>
+  </div>
+  <div class="logo-box fixed bottom-0 right-0 w-[200px] h-[60px] bg-white">
+    <div class="flex items-end justify-center h-full flex-col">
+      <h1 class="text-[#352912] text-3xl font-bold">Al-Mosque</h1>
+      <small class="text-[#352912] text-sm font-medium">watermark</small>
+    </div>
+  </div>
+</div>

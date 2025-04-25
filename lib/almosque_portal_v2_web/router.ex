@@ -24,6 +24,14 @@ defmodule AlmosquePortalV2Web.Router do
     live "/beige/split_screen", Beige.SplitScreen
     live "/orange/full_screen", Orange.FullScreen
     live "/orange/split_screen", Orange.SplitScreen
+    live "/maroon/full_screen", Maroon.FullScreen
+    live "/maroon/split_screen", Maroon.SplitScreen
+    live "/green/full_screen", Green.FullScreen
+    live "/green/split_screen", Green.SplitScreen
+    live "/blue/full_screen", Blue.FullScreen
+    live "/blue/split_screen", Blue.SplitScreen
+
+
   end
 
   # Other scopes may use custom stacks.
