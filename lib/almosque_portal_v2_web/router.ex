@@ -20,11 +20,11 @@ defmodule AlmosquePortalV2Web.Router do
     get "/", PageController, :home
 
     live "/beige/split_screen", Biege.SplitScreen
-    
+
     live "/gold/full_screen", Gold.FullScreen
     live "/gold/split_screen", Gold.SplitScreen
-    live "/beige_premium/full_screen", Beige.FullScreen
-    live "/beige_premium/split_screen", Beige.SplitScreen
+    live "/beige_premium/full_screen", BeigePremium.FullScreen
+    live "/beige_premium/split_screen", BeigePremium.SplitScreen
     live "/orange/full_screen", Orange.FullScreen
     live "/orange/split_screen", Orange.SplitScreen
     live "/maroon/full_screen", Maroon.FullScreen
@@ -37,7 +37,7 @@ defmodule AlmosquePortalV2Web.Router do
     live "/gray_premium/split_screen", GrayPremium.SplitScreen
     live "/greenish/full_screen", Greenish.FullScreen
     live "/greenish/split_screen", Greenish.SplitScreen
-    
+
   end
 
   # Other scopes may use custom stacks.
