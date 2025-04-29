@@ -39,6 +39,7 @@ defmodule AlmosquePortalV2Web.Router do
     live "/greenish/split_screen", Greenish.SplitScreen
 
   end
+  
 
   # Other scopes may use custom stacks.
   # scope "/api", AlmosquePortalV2Web do
