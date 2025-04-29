@@ -3,7 +3,7 @@ import Config
 # Configure your database
 config :almosque_portal_v2, AlmosquePortalV2.Repo,
   username: "postgres",
-  password: "newpassword",
+  password: "postgres",
   hostname: "localhost",
   database: "almosque_portal_v2_dev",
   stacktrace: true,
