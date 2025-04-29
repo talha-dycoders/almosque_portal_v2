@@ -1,4 +1,4 @@
-defmodule AlmosquePortalV2Web.Gold.FullScreen do
+defmodule AlmosquePortalV2Web.Beige.SplitScreen do
   use AlmosquePortalV2Web, :live_view
 
   @prayer_times [
@@ -27,6 +27,9 @@ defmodule AlmosquePortalV2Web.Gold.FullScreen do
       start_time: "03:00 am",
       iqama_time: "03:00 pm"
     },
+
+  ]
+  @jummah_prayer_times [
     %{
       namaz_name: "JUM'AH",
       start_time: "03:00 am",
@@ -37,9 +40,10 @@ defmodule AlmosquePortalV2Web.Gold.FullScreen do
     {:ok,
      socket
      |> assign(:prayer_times, @prayer_times)
-     |> assign(:active_prayer_time, Enum.at(@prayer_times, 2))}
+     |> assign(:active_prayer_time, Enum.at(@prayer_times, 2))
+     |> assign(:jummah_prayer_times, @jummah_prayer_times)
+     |> assign(:active_ads, "https://quran.com/")}
   end
-
 
   def time_part(time_string) do
     String.slice(time_string, 0, 5)
