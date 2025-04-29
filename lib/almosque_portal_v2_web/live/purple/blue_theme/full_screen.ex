@@ -1,4 +1,4 @@
-defmodule AlmosquePortalV2Web.Blue.FullScreen do
+defmodule AlmosquePortalV2Web.Purple.BlueTheme.FullScreen do
   use AlmosquePortalV2Web, :live_view
 
   def mount(_params, _session, socket) do

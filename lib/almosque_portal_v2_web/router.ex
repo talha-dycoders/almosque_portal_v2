@@ -39,9 +39,15 @@ defmodule AlmosquePortalV2Web.Router do
     live "/greenish/split_screen", Greenish.SplitScreen
 
   end
-  
 
-  # Other scopes may use custom stacks.
+  scope "/purple", AlmosquePortalV2Web do
+    pipe_through :browser
+    live "/blue_theme/full_screen", Purple.BlueTheme.FullScreen
+  end
+
+
+
+   # Other scopes may use custom stacks.
   # scope "/api", AlmosquePortalV2Web do
   #   pipe_through :api
   # end
