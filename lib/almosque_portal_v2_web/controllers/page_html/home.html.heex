@@ -46,27 +46,141 @@
 
     <div class="flex">
       <div class="w-full sm:w-auto">
-        <div class="grid grid-cols-1 mt-10 gap-x-6 gap-y-4 sm:grid-cols-3">
+        <div class="grid grid-cols-1 mt-10 gap-y-4 ">
           <a
             href="https://www.figma.com/design/YujhMRPVCtW4Mqdevkzylt/portal.islamnow?node-id=0-1&p=f&t=nwnCob9USQwIK98U-0"
-            class="relative px-6 py-4 text-4xl font-semibold leading-6 underline group rounded-2xl text-zinc-900 sm:py-6"
+            class="relative py-4 text-4xl font-semibold leading-6 underline group rounded-2xl text-zinc-900 sm:py-6"
           >
             Figma
           </a>
         </div>
       </div>
     </div>
-    <div class="w-full sm:w-auto mt-6 h-[600px] overflow-y-auto">
+    <div class="w-full sm:w-auto mt-6 h-[400px] overflow-y-auto">
       <h2 class="text-2xl font-semibold text-zinc-900 mb-4">Available Routes</h2>
-      <ul class="grid grid-cols-1 gap-y-2">
+
+      <ol class="grid grid-cols-1 gap-2 border">
+        <h4 class="text-xl font-semibold text-zinc-900 mb-4">Abdullah </h4>
+
         <li>
-          <a href={~p"/"} class="text-lg text-brand hover:underline">Home</a>
+          <span class="text-lg text-brand font-semibold">Beige</span>
+          <ul class="ml-3">
+            <li>
+              <a href={~p"/beige/split_screen"} class="text-lg text-brand underline">Split Screen</a>
+            </li>
+          </ul>
         </li>
+        <hr class="my-1"/>
+      </ol>
+
+      <ol class="grid grid-cols-1 gap-2 border">
+        <h4 class="text-2xl font-semibold text-zinc-900 mb-4">Abdulrehman </h4>
+
         <li>
-          <a href={~p"/gold/full_screen"} class="text-lg text-brand hover:underline">Gold Full Screen</a>
+          <span class="text-lg text-brand font-semibold">Gold</span>
+          <ul class="ml-3">
+            <li>
+              <a href={~p"/gold/full_screen"} class="text-lg text-brand underline">Full Screen</a>
+            </li>
+            <li>
+              <a href={~p"/gold/split_screen"} class="text-lg text-brand underline">Split Screen</a>
+            </li>
+          </ul>
+        </li>
+        <hr class="my-1"/>
+
+        <li>
+          <span class="text-lg text-brand font-semibold">Beige Premium</span>
+          <ul class="ml-3">
+            <li>
+              <a href={~p"/beige_premium/full_screen"} class="text-lg text-brand underline">Full Screen</a>
+            </li>
+            <li>
+              <a href={~p"/beige_premium/split_screen"} class="text-lg text-brand underline">Split Screen</a>
+            </li>
+          </ul>
+        </li>
+        <hr class="my-1"/>
+
+        <li>
+          <span class="text-lg text-brand font-semibold">Orange</span>
+          <ul class="ml-3">
+            <li>
+              <a href={~p"/orange/full_screen"} class="text-lg text-brand underline">Full Screen</a>
+            </li>
+            <li>
+              <a href={~p"/orange/split_screen"} class="text-lg text-brand underline">Split Screen</a>
+            </li>
+          </ul>
+        </li>
+        <hr class="my-1"/> 
+
+        <li>
+          <span class="text-lg text-brand font-semibold">Maroon</span>
+          <ul class="ml-3">
+            <li>
+              <a href={~p"/maroon/full_screen"} class="text-lg text-brand underline">Full Screen</a>
+            </li>
+            <li>
+              <a href={~p"/maroon/split_screen"} class="text-lg text-brand underline">Split Screen</a>
+            </li>
+          </ul>
+        </li>
+        <hr class="my-1"/>
+
+        <li>
+          <span class="text-lg text-brand font-semibold">Green</span>
+          <ul class="ml-3">
+            <li>
+              <a href={~p"/green/full_screen"} class="text-lg text-brand underline">Full Screen</a>
+            </li>
+            <li>
+              <a href={~p"/green/split_screen"} class="text-lg text-brand underline">Split Screen</a>
+            </li>
+          </ul>
+        </li>
+        <hr class="my-1"/>
+
+        <li>
+          <span class="text-lg text-brand font-semibold">Blue</span>
+          <ul class="ml-3">
+            <li>
+              <a href={~p"/blue/full_screen"} class="text-lg text-brand underline">Full Screen</a>
+            </li>
+            <li>
+              <a href={~p"/blue/split_screen"} class="text-lg text-brand underline">Split Screen</a>
+            </li>
+          </ul>
+        </li>
+        <hr class="my-1"/>
+
+        <li>
+          <span class="text-lg text-brand font-semibold">Gray Premium</span>
+          <ul class="ml-3">
+            <li>
+              <a href={~p"/gray_premium/full_screen"} class="text-lg text-brand underline">Full Screen</a>
+            </li>
+
+            <li>
+              <a href={~p"/gray_premium/split_screen"} class="text-lg text-brand underline">Split Screen</a>
+            </li>
+          </ul>
+        </li>
+        <hr class="my-1"/>
+
+        <li>
+          <span class="text-lg text-brand font-semibold">Greenish</span>
+          <ul class="ml-3">
+            <li>
+              <a href={~p"/greenish/full_screen"} class="text-lg text-brand underline">Full Screen</a>
+            </li>
+            <li>
+              <a href={~p"/greenish/split_screen"} class="text-lg text-brand underline">Split Screen</a>
+            </li>
+          </ul>
         </li>
         <!-- Add more routes as they become available -->
-      </ul>
+      </ol>
     </div>
   </div>
 </div>

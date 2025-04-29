@@ -13,12 +13,21 @@ module.exports = {
   ],
   theme: {
     extend: {
+    
+     
       colors: {
-        brand: "#FD4F00",
+        brand: "rgba(202, 123, 86, 0.78)",
+        oliveDark: ' #352912',
+        lightgreen: ' #A7F3D0',
+        customorange: '#FFB347',
+        darkgreen: '#014421', // custom dark green
+        darkbrown: ' #352912',  
+        sand: '#D6C6A4', 
+        white: ' #ffffff', 
+        swana: ' #A67B5B',
+        swanaDark: ' #6B4226',
+        swanaLight: ' #D2B48C',
       },
-      backgroundColor: {
-        "dark-gold-color": "var(--dark-gold-color)",
-      }
     },
   },
   plugins: [
