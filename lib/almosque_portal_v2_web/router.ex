@@ -37,6 +37,8 @@ defmodule AlmosquePortalV2Web.Router do
     live "/gray_premium/split_screen", GrayPremium.SplitScreen
     live "/greenish/full_screen", Greenish.FullScreen
     live "/greenish/split_screen", Greenish.SplitScreen
+    live "/dark_blue_premium/full_screen", DarkBluePremium.FullScreen
+    live "/dark_blue_premium/split_screen", DarkBluePremium.SplitScreen
 
   end
 
