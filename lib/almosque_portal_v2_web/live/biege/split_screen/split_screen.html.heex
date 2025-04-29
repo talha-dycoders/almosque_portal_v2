@@ -1,0 +1,167 @@
+<div class="w-full min-h-screen  bg-[url('/images/8764038.png')] bg-cover bg-center font-serif">
+    <div class="flex-1 h-full min-h-[91vh] grow-1 grid grid-cols-[69%_31%]">
+      
+  <!-- left side -->
+      <div class="w-full h-full grid grid-rows-[78%_22%]">
+        
+  <!-- ads container -->
+  <div class="w-full h-full">
+    <%= if @active_ads && String.ends_with?(@active_ads, [".jpg", ".png", ".jpeg", ".webp", ".gif", ".svg"]) do %>
+      <img src={@active_ads} class="w-full h-full object-cover overflow-hidden" />
+    <% else %>
+      <iframe src={@active_ads} class="w-full h-full object-cover overflow-hidden"></iframe>
+    <% end %>
+  </div>
+        
+  <!-- prayer times table -->
+        <div class="w-full h-full">
+          <div class="container mx-auto h-full rounded-lg">
+            <table class="min-w-full border-collapse text-center h-full">
+              <thead>
+                <tr class="bg-brand text-[#ffffff]">
+                  <th class="p-2"></th>
+                  <%= for prayer <- @prayer_times do %>
+                    <th class={["p-2 text-center text-xl uppercase", if(prayer.namaz_name == @active_prayer_time.namaz_name, do: "bg-white text-black", else: "text-[#ffffff]")]}>
+                      <span class="text-4xl font-medium"><%= prayer.namaz_name %></span>
+                    </th>
+                  <% end %>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="text-start bg-[#6B4226] rounded-lg">
+                  <th class="p-2 pb-0 uppercase text-start font-light text-xl text-[#ffffff]">Start</th>
+                  <%= for prayer <- @prayer_times do %>
+                    <td class={["p-2 pb-0 text-center", if(prayer.namaz_name == @active_prayer_time.namaz_name, do: "bg-white text-black", else: " text-[#ffffff]")]}>
+                      <span class="flex items-baseline justify-center">
+                        <span class="text-3xl">{time_part(prayer.start_time)}</span>
+                        <span class="text-xl uppercase">{am_pm_part(prayer.start_time)}</span>
+                      </span>
+                    </td>
+                  <% end %>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+  <!-- right side -->
+      <div class="w-full h-full p-4 mt-6">
+        
+  <!-- Sunrise + Logo + Sunset -->
+        <div class="flex-1 grid grid-cols-3 gap-2 px-4 grid-rows-1 my-4 bg-brand rounded-3xl ">
+          <div class="rounded-lg p-2 flex flex-col items-center justify-center bg-brand rounded-3xl h-[85%]"> 
+            <img src="/images/sunrise-morning-svgrepo-com.svg" alt="sunrise" class="w-16 h-16" />
+            <span class="text-2xl font-medium text-[#ffffff]">Sunrise</span>
+            <span class="flex items-baseline justify-center text-[#ffffff]">
+              <span class="text-3xl text-[#ffffff]">05:00</span>
+              <span class="text-xl uppercase text-[#ffffff]">AM</span>
+            </span>
+          </div>
+  
+          <div class="bg-brand rounded-3xl shadow-sm p-2 relative -top-6">
+            <img src="/images/logo.png" alt="logo" class="w-full h-full object-contain" style="filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));" />
+          </div>
+  
+          <div class="rounded-lg p-2 flex flex-col items-center justify-center h-[85%]">
+            <img src="/images/sunset-4-svgrepo-com.svg" alt="sunset" class="w-16 h-16" />
+            <span class="text-2xl font-medium text-[#ffffff]">Sunset</span>
+            <span class="flex items-baseline justify-center ">
+              <span class="text-3xl text-[#ffffff]">05:00</span>
+              <span class="text-xl uppercase text-[#ffffff]">PM</span>
+            </span>
+          </div>
+
+        </div>
+        
+  <!-- current time -->
+        <div class="bg-brand rounded-3xl shadow-sm p-2 w-full mb-4 text-white">
+          <div class="flex justify-center items-baseline gap-2" id="digital-clock">
+            <span class="text-[6rem] font-medium">
+              <span class="digital-clock-hours">03</span>
+              : <span class="digital-clock-minutes">45</span>
+            </span>
+            <span class="digital-clock-am-pm text-5xl font-medium">PM</span>
+          </div>
+  
+          <div class="text-2xl flex justify-center items-center relative -top-4 text-[#ffffff]" id="today-date">
+            Friday, October 11, 2024
+          </div>
+        </div>
+  
+        <div class="px-8">
+          <!-- next iqamah -->
+          <div class="bg-brand rounded-3xl shadow-sm p-2 w-full flex justify-center items-center mb-4">
+            <div>
+            <span class="digital-countdown text-4xl uppercase text-[#ffffff]">Next Iqamah in </span>
+              <div class="flex items-baseline justify-evenly py-2">
+                <span class="flex items-baseline text-white">
+                  <span class="text-6xl font-medium">00</span>
+                  <span class="text-3xl uppercase">HR</span>
+                </span>
+                <span class="flex items-baseline text-white">
+                  <span class="text-6xl font-medium">15</span>
+                  <span class="text-3xl uppercase">MIN</span>
+                </span>
+              </div>
+            </div>
+          </div>
+  
+          <div class="bg-brand rounded-3xl shadow-sm p-2 w-full flex justify-center items-center">
+            <div class="w-full">
+              <div class="text-4xl uppercase text-center w-full text-[#ffffff]">JUM'AH</div>
+              <div class="flex items-baseline justify-evenly py-2">
+                <div class="flex flex-col items-center justify-center">
+                  <span class="flex items-baseline">
+                    <span class="text-4xl font-medium text-white">
+                      <%= time_part(@jummah_prayer_times |> Enum.at(0) |> Map.get(:start_time)) %>
+                    </span>
+                    <span class="text-xl uppercase text-white">
+                      <%= am_pm_part(@jummah_prayer_times |> Enum.at(0) |> Map.get(:start_time)) %>
+                    </span>
+                  </span>
+                  <span class="text-xl uppercase text-[#ffffff]">Start</span>
+                </div>
+                <div class="flex flex-col items-center justify-center">
+                  <span class="flex items-baseline">
+                    <span class="text-4xl font-medium text-white">
+                      <%= time_part(@jummah_prayer_times |> Enum.at(0) |> Map.get(:iqama_time)) %>
+                    </span>
+                    <span class="text-xl uppercase text-white">
+                      <%= am_pm_part(@jummah_prayer_times |> Enum.at(0) |> Map.get(:iqama_time)) %>
+                    </span>
+                  </span>
+                  <span class="text-xl uppercase text-[#ffffff]">IQAMA</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- footer -->
+    <div class="w-full h-18">
+      <div class="flex w-full items-baseline h-16">
+        <div class="flex items-center px-2 h-full w-full">
+          <div class="flex items-center justify-center gap-2 w-full h-full overflow-hidden">
+              <div class="whitespace-nowrap animate-marquee">
+                  <h1 class="text-[#352912] text-2xl font-medium inline-block">As-salam-Alaikum all Muslims</h1>
+              </div>
+          </div>
+          <style>
+              @keyframes marquee {
+                  0% { transform: translateX(100%); }
+                  100% { transform: translateX(-100%); }
+              }
+              .animate-marquee {
+                  animation: marquee 15s linear infinite;
+              }
+          </style>
+      </div>
+        <div class="flex items-end h-full">
+          <img src="/images/logo.png" alt="logo" class="w-12 h-12 mr-8" style="filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));"/>
+        </div>
+      </div>
+    </div>
+  </div>
