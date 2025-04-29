@@ -1,4 +1,4 @@
-<div class="min-h-screen bg-gradient-to-br from-indigo-900 to-purple-900 text-white font-sans relative px-10 py-8">
+<div class="min-h-screen text-white font-sans relative px-10 py-8 custom-bg overflow-hidden">
   <!-- Date and top section -->
   <div class="flex justify-between items-start text-sm mb-6">
     <div>
@@ -47,4 +47,26 @@
   <div class="absolute bottom-6 right-8 text-xs font-semibold tracking-widest">
     AL-QUBA MASJIDAL
   </div>
+
+  <style>
+    .custom-bg {
+      position: relative;
+      z-index: 1;
+      background: linear-gradient(245deg,rgba(63, 23, 99, 1) 0%, rgba(39, 28, 115, 1) 43%, rgba(35, 22, 91, 1) 91%);
+    }
+
+    .custom-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url('/images/orange_series_bg.png');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.5;
+      scale: 2;
+      /* Adjust opacity here */
+      z-index: -1;
+    }
+
+  </style>
 </div>
