@@ -2,4 +2,18 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-/* This file is for your main application CSS */
+@keyframes marquee {
+    0% {
+      transform: translateX(-100px);
+    }
+    50% {
+      transform: translateX(100px);
+    }
+    100% {
+      transform: translateX(-100px);
+    }
+  }
+  
+  .animate-marquee {
+    animation: marquee 1s ease-in-out infinite;
+  }/* This file is for your main application CSS */

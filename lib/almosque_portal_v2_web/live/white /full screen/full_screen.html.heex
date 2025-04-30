@@ -1,0 +1,77 @@
+<div class="h-screen bg-white text-black flex flex-col">
+  <!-- Main Content Area -->
+  <div class="flex flex-1">
+    <!-- Left Side Div (50%) -->
+    <div class="w-1/2 p-4 flex flex-col items-center justify-center">
+      <!-- Logo image -->
+      <img src="/images/logo.png" 
+           alt="Mosque Logo" 
+           class="h-[150px] w-[150px] mb-[15px]"/>
+      
+      <!-- Sunrise/Sunset row -->
+      <div class="flex gap-60 mb-4 items-center">
+        <div class="flex items-center">
+          <img src="/images/asar.png" alt="Sunrise" class="h-6 w-6 mr-2"/>
+          <span class="text-3xl"><%= @sunrise %></span>
+        </div>
+        <div class="flex items-center">
+          <span class="text-3xl"><%= @sunset %></span>
+          <img src="/images/asar.png" alt="Sunset" class="h-6 w-6 ml-2"/>
+        </div>
+      </div>
+      
+      <!-- Large Time Display -->
+      <div class="text-8xl font-medium text-center"><%= @current_time %></div>
+      
+      <!-- Date Info -->
+      <span class="text-center text-sm"><%= @date_info %></span>
+      
+      <!-- Next Iqamah -->
+      <div class="text-center mt-[2rem] text-lg font-medium">Next Iqamah in <%= @next_iqamah %></div>
+    </div>
+
+    <!-- Right Side Div - Prayer Times (50%) -->
+    <div class="w-1/2 p-4 flex flex-col">
+      <!-- Prayer Times Header -->
+      <h2 class="text-4xl mb-1 ml-[7rem] tracking-wider">P R A Y E R &nbsp;&nbsp; T I M E S</h2>
+      
+      <!-- Prayer Times Table -->
+      <div class="flex-1 flex flex-col justify-between"> 
+        <%= for prayer <- @prayer_times do %>
+          <div class="flex justify-between items-center h-24 bg-[#D8E4E9]">
+            <!-- Prayer Name with Image -->
+            <div class="w-1/3 flex items-center pl-4">
+              <img src={if prayer.name == "ISHA", do: "/images/isha.png", else: "/images/asar.png"} 
+                   alt={prayer.name} 
+                   class="w-8 h-8 mr-3"/>
+              <span class="text-4xl font-medium"><%= prayer.name %></span>
+            </div>
+            
+            <!-- Times -->
+            <div class="w-1/3 text-center">
+              <span class="text-4xl font-medium"><%= String.slice(prayer.start, 0..-3) %></span>
+              <span class="text-xl"><%= String.slice(prayer.start, -2..-1) %></span>
+            </div>
+            <div class="w-1/3 text-right pr-4">
+              <span class="text-4xl font-bold"><%= String.slice(prayer.iqama, 0..-3) %></span>
+              <span class="text-xl"><%= String.slice(prayer.iqama, -2..-1) %></span>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer with both left and right elements -->
+  <div class="h-[4rem] flex items-center justify-between px-4">
+    <!-- Left side - Pink notice div -->
+    <div class="h-[7vh] w-[26vw] bg-blue-800 rounded-md flex items-center justify-center m-2">
+      <span class="text-white text-2xl text-center px-1">Fajr at 6:15AM from Monday</span>
+    </div>
+    
+    
+    
+    <!-- Right side - Mosque image -->
+    <img src="/images/mosque.png" alt="Mosque" class="h-12 w-12"/>
+  </div>
+</div>

@@ -18,24 +18,17 @@ defmodule AlmosquePortalV2Web.Router do
     pipe_through :browser
 
     get "/", PageController, :home
-    live "/gold/full_screen", Gold.FullScreen
-    live "/gold/split_screen", Gold.SplitScreen
+   
     live "/beige/full_screen", Beige.FullScreen
     live "/beige/split_screen", Beige.SplitScreen
-    live "/orange/full_screen", Orange.FullScreen
-    live "/orange/split_screen", Orange.SplitScreen
-    live "/maroon/full_screen", Maroon.FullScreen
-    live "/maroon/split_screen", Maroon.SplitScreen
-    live "/green/full_screen", Green.FullScreen
-    live "/green/split_screen", Green.SplitScreen
-    live "/blue/full_screen", Blue.FullScreen
-    live "/blue/split_screen", Blue.SplitScreen
-    live "/gray_premium/full_screen", GrayPremium.FullScreen
-    live "/gray_premium/split_screen", GrayPremium.SplitScreen
-    live "/greenish/full_screen", Greenish.FullScreen
-    live "/greenish/split_screen", Greenish.SplitScreen
-
-
+  live "/iqama/full_screen", Iqama.FullScreen
+  live "/iqama/split_screen", Iqama.SplitScreen 
+    live "/Customcolour/full_screen", Customcolour.FullScreen
+    live "/Customcolour/split_screen", Customcolour.FullScreen
+     live "/purple/full_screen", Purple.FullScreen
+    live "/purple/split_screen", Purple.SplitScreen   
+    live "/white/full_screen", White.FullScreen
+    live "/white/split_screen", White.SplitScreen
   end
 
   # Other scopes may use custom stacks.
