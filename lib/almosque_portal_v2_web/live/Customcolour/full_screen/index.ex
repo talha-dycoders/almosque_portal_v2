@@ -4,28 +4,28 @@ defmodule AlmosquePortalV2Web.Customcolour.FullScreen do
   @prayer_times [
     %{
       namaz_name: "FAJA",
-      start_time: "04:30 am",
-      iqama_time: "05:00 am"
+      start_time: "05:27AM",
+      iqama_time: "05:00AM"
     },
     %{
       namaz_name: "ZUHAR",
-      start_time: "12:15 pm",
-      iqama_time: "01:00 pm"
+      start_time: "11:43AM",
+      iqama_time: "01:30PM"
     },
     %{
       namaz_name: "ASR",
-      start_time: "03:45 pm",
-      iqama_time: "04:30 pm"
+      start_time: "2:38 PM",
+      iqama_time: "04:00PM"
     },
     %{
       namaz_name: "MAGHRIB",
-      start_time: "06:20 pm",
-      iqama_time: "06:30 pm"
+      start_time: "4:22 PM",
+      iqama_time: "4:27 PM"
     },
     %{
       namaz_name: "ISHA",
-      start_time: "07:45 pm",
-      iqama_time: "08:15 pm"
+      start_time: "5:43 PM",
+      iqama_time: "9:05 PM"
     },
   ]
   def mount(_params, _session, socket) do
