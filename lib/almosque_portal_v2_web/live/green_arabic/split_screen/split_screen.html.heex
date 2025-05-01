@@ -1,5 +1,5 @@
 <div class="w-full min-h-screen overflow-hidden font-sans"
-  style="background: linear-gradient(1deg, rgb(224, 221, 217) 0%, rgb(231, 229, 227) 64%);">
+  style="background: linear-gradient(1deg, rgb(219, 224, 217) 0%, rgb(228, 231, 227) 64%);">
   <div class="flex-1 h-full min-h-[91vh] grow-1 grid grid-cols-[69%_31%] mb-5">
 
     <!-- left side -->
@@ -24,7 +24,7 @@
                 <th class="p-2"></th>
                 <%= for prayer <- @prayer_times do %>
                   <th class={["p-2 text-center text-xl uppercase", if(prayer.namaz_name==@active_prayer_time.namaz_name,
-                    do: "bg-[#6f3635] text-white" , else: "text-black" )]}>
+                    do: "bg-[#1d300d] text-white" , else: "text-black" )]}>
                     <span class="text-4xl font-medium">
                       <%= prayer.namaz_name %>
                     </span>
@@ -37,7 +37,7 @@
                 <th class="p-2 pb-0 uppercase text-start font-light text-xl text-black">Start</th>
                 <%= for prayer <- @prayer_times do %>
                   <td class={["p-2 pb-0 text-center", if(prayer.namaz_name==@active_prayer_time.namaz_name,
-                    do: "bg-[#6f3635] text-white" , else: "text-black" )]}>
+                    do: "bg-[#1d300d] text-white" , else: "text-black" )]}>
                     <span class="flex items-baseline justify-center">
                       <span class="text-3xl">{time_part(prayer.start_time)}</span>
                       <span class="text-xl uppercase">{am_pm_part(prayer.start_time)}</span>
@@ -49,7 +49,7 @@
                 <th class="p-2 uppercase text-start font-light text-xl text-black">Iqamah</th>
                 <%= for prayer <- @prayer_times do %>
                   <td class={["p-2 text-center font-medium", if(prayer.namaz_name==@active_prayer_time.namaz_name,
-                    do: "bg-[#6f3635] text-white" , else: "text-black" )]}>
+                    do: "bg-[#1d300d] text-white" , else: "text-black" )]}>
                     <span class="flex items-baseline justify-center">
                       <span class="text-5xl">{time_part(prayer.iqama_time)}</span>
                       <span class="text-3xl uppercase">{am_pm_part(prayer.iqama_time)}</span>
@@ -67,7 +67,7 @@
     <div class="w-full h-full p-4">
 
       <!-- current time -->
-      <div class="shadow-sm p-2 w-full mb-4 text-black">
+      <div class="p-2 w-full mb-4 text-[#1d300d]"> 
         <div class="flex justify-center items-baseline gap-2" id="digital-clock">
           <span class="text-[6rem] font-medium">
             <span class="digital-clock-hours">03</span>
@@ -83,7 +83,7 @@
 
       <div class="px-8">
         <!-- next iqamah -->
-        <div class="bg-[#6f3635] border border-white shadow-sm p-2 w-full flex justify-center items-center mb-4">
+        <div class="bg-[#1d300d] border border-white shadow-sm p-2 w-full flex justify-center items-center mb-4">
           <div>
             <span class="digital-countdown text-4xl uppercase text-white">Next Iqamah in </span>
             <div class="flex items-baseline justify-evenly py-2">
@@ -99,7 +99,7 @@
           </div>
         </div>
 
-        <div class="bg-[#6f3635] border border-white shadow-sm p-2 w-full flex justify-center items-center">
+        <div class="bg-[#1d300d] border border-white shadow-sm p-2 w-full flex justify-center items-center">
           <div class="w-full">
             <div class="text-4xl uppercase text-center w-full text-white">JUM'AH</div>
             <div class="flex items-baseline justify-evenly py-2">
