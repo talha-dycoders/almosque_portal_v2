@@ -1,0 +1,75 @@
+<div class="w-full h-screen overflow-hidden grid grid-rows-[120px_1fr_60px] bg-[url('/images/4902963.jpg')] bg-cover bg-center font-serif">  
+    <div class="header w-full bg-beige-800 flex items-center justify-between px-12" style="box-shadow: -1px 20px 20px 20px rgba(190, 180, 160, 0.44);">
+        <div class="flex items-start gap-2 flex-col  text-green-700">
+            <h1 class="text-2xl  text-green-700 font-bold">SUNDAY, MAY 17, 2025</h1>
+            <h1 class="text-2xl  text-green-700 font-bold">10:00 AM</h1>
+        </div>
+        <div class="h-[120px] w-[400px] bg-beige-800 rounded-2xl relative top-[35%]">
+            <div class="flex items-center justify-center flex-col gap-2">
+                <div class="flex items-baseline gap-4">
+                    <h1 class=" text-green-700 text-7xl font-medium">03:00</h1>
+                    <h1 class=" text-green-700 text-4xl font-medium">PM</h1>
+                </div>
+                <div class="flex justify-center">
+                    <h1 class="text-2xl font-medium  text-green-700">NEXT IQAMA IN : 3:12</h1>
+                </div>
+            </div>
+        </div>
+        <div class="flex items-start gap-2 flex-col ">
+            <h1 class="text-2xl text-green-700 font-bold">SUNRISE - 06:00 AM</h1>
+            <h1 class="text-2xl text-green-700 font-bold">SUNSET - 06:00 PM</h1>
+        </div>
+    </div>  
+    <div class="bg-transparent h-full grid grid-cols-3 grid-rows-2 pt-6">
+        
+        <%= for prayer_time <- @prayer_times do %>
+        <div class="w-full h-full p-12">
+                <div class="flex items-center justify-center">
+              <div class="w-[288px] h-[288px] rounded-full bg-beige-900 overflow-hidden p-1">
+                <div class="w-[280px] h-[280px] rounded-full bg-beige-900 overflow-hidden" style="border: 12px dotted #b8b09c;">
+                    <div class={["w-[270px] h-[270px] rounded-full flex flex-col items-center justify-center", if(prayer_time.namaz_name == @active_prayer_time.namaz_name, do: "bg-white text-beige-800", else: "bg-green-800 text-white")]} style="box-shadow: inset -6px -5px 18px 5px #a89d84;">
+                        <h1 class="text-2xl font-medium">STARTS</h1>
+                        <div class="flex items-baseline">
+                            <h1 class="text-5xl font-medium">{time_part(prayer_time.start_time)}</h1>
+                            <h1 class="text-2xl uppercase font-medium">{am_pm_part(prayer_time.start_time)}</h1>
+                        </div>
+                        <h1 class="text-4xl font-bold text-beige-400"><%= prayer_time.namaz_name %></h1>
+                        <div class="flex items-baseline">
+                            <h1 class="text-6xl font-medium">{time_part(prayer_time.iqama_time)}</h1>
+                            <h1 class="text-2xl uppercase font-medium">{am_pm_part(prayer_time.iqama_time)}</h1>
+                        </div>
+                        <h1 class="text-2xl font-medium">IQAMA</h1>
+                    </div>
+                </div>
+              </div>
+                </div>
+            </div>
+            <% end %> 
+    </div>
+
+    <div class="footer w-full bg-beige-800">
+        <div class="flex items-center px-2 h-full">
+            <div class="flex items-center justify-center gap-2 w-full h-full overflow-hidden">
+                <div class="whitespace-nowrap animate-marquee">
+                    <h1 class="text-beige-200 text-2xl font-medium inline-block">As-salam-Alaikum all Muslims</h1>
+                </div>
+            </div>
+            <style>
+                @keyframes marquee {
+                    0% { transform: translateX(100%); }
+                    100% { transform: translateX(-100%); }
+                }
+                .animate-marquee {
+                    animation: marquee 15s linear infinite;
+                }
+            </style>
+        </div>
+    </div>
+
+    <div class="logo-box fixed bottom-0 right-0 w-[200px] h-[60px] bg-beige-100">
+        <div class="flex items-end justify-center h-full flex-col">
+            <h1 class="text-beige-700 text-3xl font-bold">Al-Mosque</h1>
+            <small class="text-beige-700 text-sm font-medium">watermark</small>
+        </div>
+    </div>
+</div>

@@ -20,7 +20,8 @@ defmodule AlmosquePortalV2Web.Router do
     get "/", PageController, :home
 
     live "/beige/split_screen", Biege.SplitScreen
-
+    
+    
     live "/gold/full_screen", Gold.FullScreen
     live "/gold/split_screen", Gold.SplitScreen
     live "/beige_premium/full_screen", BeigePremium.FullScreen
