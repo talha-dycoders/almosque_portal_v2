@@ -20,7 +20,7 @@
               <tbody class="overflow-hidden">
                 <%= for prayer_time <- @prayer_times do %>
                   <tr class={
-                    if prayer_time.namaz_name == "ZUHAR" do
+                    if prayer_time.namaz_name == "ZUHAR" do 
                       "h-[50px] bg-[#d3d3d3] text-black"
                     else
                       "h-[50px] bg-[#071630] text-white"
