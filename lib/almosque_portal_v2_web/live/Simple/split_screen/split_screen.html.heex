@@ -22,7 +22,7 @@
                 <th class="p-2"></th>
                 <%= for prayer <- @prayer_times do %>
                   <th class={["p-2 text-center text-xl uppercase", 
-                    if(prayer.namaz_name == "ASR", do: "bg-green-900 text-white",
+                    if(prayer.namaz_name == "ASR", do: "bg-white text-black ",
                     else: if(prayer.namaz_name == @active_prayer_time.namaz_name, do: "bg-[#f8f8f8] text-black", else: "text-[#ffffff]"))]}>
                     <span class="text-4xl font-medium"><%= prayer.namaz_name %></span>
                   </th>
@@ -34,7 +34,7 @@
                 <th class="p-2 pb-0 uppercase text-start font-light text-xl text-[#ffffff]">Start</th>
                 <%= for prayer <- @prayer_times do %>
                   <td class={["p-2 pb-0 text-center", 
-                    if(prayer.namaz_name == "ASR", do: "bg-green-900 text-white",
+                    if(prayer.namaz_name == "ASR", do: "bg-white text-black",
                     else: if(prayer.namaz_name == @active_prayer_time.namaz_name, do: "bg-[#f8f8f8] text-black", else: "text-[#ffffff]"))]}>
                     <span class="flex items-baseline justify-center">
                       <span class="text-3xl">{time_part(prayer.start_time)}</span>
