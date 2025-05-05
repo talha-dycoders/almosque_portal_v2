@@ -1,0 +1,134 @@
+<div class="w-full h-screen overflow-hidden font-sans">
+  <div class="grid grid-cols-[1fr_35%] h-[88%]">
+    <!-- Left Column - Prayer Times Table -->
+    <div class="h-full flex-grow flex justify-center bg-[#071630]">
+      <div class="flex flex-col flex-grow w-full h-full">
+        <div class="grid grid-cols-1 gap-4 w-full h-full flex-grow">
+          <div class="w-full h-full">
+            <table class="h-full w-full text-white">
+              <thead>
+                <tr class="h-[4%] b">
+                  <th></th>
+                  <th>
+                    <h2 class="text-2xl font-light" style="letter-spacing: 0.1em;">STARTS</h2>
+                  </th>
+                  <th>
+                    <h2 class="text-2xl font-light" style="letter-spacing: 0.1em;">IQAMAH</h2>
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="overflow-hidden">
+                <%= for prayer_time <- @prayer_times do %>
+                  <tr class={
+                    if prayer_time.namaz_name == "ZUHAR" do 
+                      "h-[50px] bg-[#d3d3d3] text-black"
+                    else
+                      "h-[50px] bg-[#071630] text-white"
+                    end
+                  }>
+                    <td class="w-[20%]">
+                      <h2 class="text-4xl text-center px-1">
+                        <div>
+                          <%= if prayer_time.namaz_name == "FAJA" do %>
+                            FAJR 
+                          <% else %>
+                            <%= prayer_time.namaz_name %>
+                          <% end %>
+                        </div>
+                      </h2>
+                    </td>
+                    <td class="border-l-2 border-white">
+                      <div class="flex items-baseline justify-center">
+                        <h1 class="text-[4.3rem]"><%= String.slice(prayer_time.start_time, 0, 5) %></h1>
+                        <span class="text-2xl ml-1"><%= String.slice(prayer_time.start_time, 5, 2) %></span>
+                      </div>
+                    </td>
+                    <td class="border-l-2 border-l-white border-r-4 border-r-[#d3d3d3]">
+                      <div class="flex items-baseline justify-center">
+                        <h1 class="text-[5.2rem]"><%= String.slice(prayer_time.iqama_time, 0, 5) %></h1>
+                        <span class="text-2xl ml-1"><%= String.slice(prayer_time.iqama_time, 5, 2) %></span>
+                      </div>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column - Mosque Info -->
+    <div class="flex flex-col justify-start items-center gap-2 px-8 bg-[#d3d3d3] pt-4">
+      <!-- Date Information -->
+      <div class="flex flex-col items-center text-black w-full">
+        <h1 class="text-3xl font-medium uppercase">RABI AL-THANI 11</h1>
+        <div class="h-4"></div>
+        <h1 class="text-3xl font-medium uppercase">SUNDAY, DEC 8</h1>
+        <div class="border-t-2 border-black w-full my-3"></div>
+      </div>
+      <div class="flex flex-col items-center justify-center text-black w-full">
+    <div class="flex items-baseline gap-4" style="line-height: 1;">
+    <h1 class="text-[8rem]">11:37</h1>
+    <h1 class="text-5xl">AM</h1>
+  </div>
+  <div class="text-4xl font-medium mt-2">NEXT IQAMA IN 1:53</div>
+  <div class="border-t-2 border-black w-full my-3"></div>
+    </div>
+      <!-- Jummah Times -->
+      <div class="flex flex-col items-center text-black w-full">
+        <h2 class="text-3xl font-medium uppercase">JUMMAH</h2>
+        <div class="h-4"></div>
+        <div class="flex justify-between w-full">
+          <div class="flex items-baseline">
+            <h1 class="text-6xl">1:00</h1>
+            <h1 class="text-3xl">PM</h1>
+          </div>
+          <div class="flex items-baseline">
+            <h1 class="text-6xl">1:30</h1>
+            <h1 class="text-3xl">PM</h1>
+          </div>
+        </div>
+        <div class="flex justify-between w-full mt-2">
+          <h2 class="text-xl font-medium">STARTS</h2>
+          <h2 class="text-xl font-medium">JUMMAH</h2>
+        </div>
+      </div>
+
+      <!-- Sunrise/Sunset Box -->
+      <div class="bg-[#071630] h-28 w-full flex flex-col items-center justify-center gap-2 rounded-xl mt-4">
+        <div class="flex items-center justify-center gap-2">
+          <img src="/images/sunrise1.png" alt="sunrise" class="w-8 h-8 brightness-0 invert" />
+          <h1 class="text-white text-xl uppercase">SUNRISE</h1>
+          <h1 class="text-white text-4xl ml-2">7:06<small class="text-2xl">AM</small></h1>
+        </div>
+        <div class="flex items-center justify-center gap-2">
+       <img src="/images/sunset1.png" alt="sunset" class="w-8 h-8 brightness-0 invert" />
+          <h1 class="text-white text-xl uppercase">SUNSET</h1>
+          <h1 class="text-white text-4xl ml-2">4:22<small class="text-2xl">PM</small></h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer w-full h-[58px] bg-white border-t-2 border-gray-300">
+    <div class="flex items-center px-2 h-full">
+      <div class="flex items-center justify-center gap-2 w-full h-full overflow-hidden">
+        <div class="whitespace-nowrap animate-marquee">
+          <h1 class="text-black text-2xl font-medium inline-block">As-salam-Alaikum all Muslims</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    @keyframes marquee {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    .animate-marquee {
+      animation: marquee 15s linear infinite;
+    }
+  </style>
+</div>
