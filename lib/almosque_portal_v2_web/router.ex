@@ -39,6 +39,10 @@ defmodule AlmosquePortalV2Web.Router do
     live "/greenish/split_screen", Greenish.SplitScreen
     live "/green_arabic/full_screen", GreenArabic.FullScreen
     live "/green_arabic/split_screen", GreenArabic.SplitScreen
+    live "/turquoise_premium/full_screen", TurquoisePremium.FullScreen
+    live "/turquoise_premium/split_screen", TurquoisePremium.SplitScreen
+    live "/ramadan_2024_premium/full_screen", Ramadan2024Premium.FullScreen
+    live "/ramadan_2024_premium/split_screen", Ramadan2024Premium.SplitScreen
 
   end
 
