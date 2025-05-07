@@ -27,8 +27,8 @@ defmodule AlmosquePortalV2Web.Router do
     live "/customcolour/full_screen", Customcolour.FullScreen
     live "/customcolour/split_screen", Customcolour.SplitScreen
 
-    live "/iqamah/full_screen", Iqamah.FullScreen
-
+    live "/iqamah/full_screen", Iqama.FullScreen
+    live "/iqamah/split_screen", Iqama.SplitScreen
     live "/purple/full_screen", Purple.FullScreen
     live "/purple/split_screen", Purple.SplitScreen
 

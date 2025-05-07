@@ -1,6 +1,5 @@
 defmodule AlmosquePortalV2Web.White.FullScreen do
   use AlmosquePortalV2Web, :live_view
-  alias AlmosquePortalV2Web.Router.Helpers, as: Routes
 
   @prayer_times [
     %{name: "FAJR", start: "5:29AM", iqama: "6:30AM"},
