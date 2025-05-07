@@ -1,4 +1,4 @@
-defmodule AlmosquePortalV2Web.Greenish.SplitScreenView do
+defmodule AlmosquePortalV2Web.Greenish.SplitScreen do
   use AlmosquePortalV2Web, :live_view
 
   @prayer_times [
