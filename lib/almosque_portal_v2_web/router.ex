@@ -21,6 +21,25 @@ defmodule AlmosquePortalV2Web.Router do
 
     live "/beige/split_screen", Biege.SplitScreen
 
+    live "/beige_simple/full_screen", BeigeSimple.FullScreen
+    live "/beige_simple/split_screen", BeigeSimple.SplitScreen
+
+    live "/customcolour/full_screen", Customcolour.FullScreen
+    live "/customcolour/split_screen", Customcolour.SplitScreen
+
+    live "/iqamah/full_screen", Iqamah.FullScreen
+
+    live "/purple/full_screen", Purple.FullScreen
+    live "/purple/split_screen", Purple.SplitScreen
+
+    live "/simple/split_screen", Simple.SplitScreen
+
+    live "/white/full_screen", White.FullScreen
+    live "/white/split_screen", White.SplitScreen
+
+
+
+
     live "/gold/full_screen", Gold.FullScreen
     live "/gold/split_screen", Gold.SplitScreen
     live "/beige_premium/full_screen", BeigePremium.FullScreen

@@ -1,9 +1,9 @@
-defmodule AlmosquePortalV2Web.Greenish.SplitScreenView do
+defmodule AlmosquePortalV2Web.Greenish.SplitScreen do
   use AlmosquePortalV2Web, :live_view
 
   @prayer_times [
     %{
-      namaz_name: "FAJAR",
+      namaz_name: "FAJA",
       start_time: "03:00 am",
       iqama_time: "03:00 pm"
     },

@@ -1,9 +1,9 @@
-defmodule AlmosquePortalV2Web.Greenish.SplitScreenView do
+defmodule AlmosquePortalV2Web.BeigeSimple.SplitScreen do
   use AlmosquePortalV2Web, :live_view
 
   @prayer_times [
     %{
-      namaz_name: "FAJAR",
+      namaz_name: "FAJA",
       start_time: "03:00 am",
       iqama_time: "03:00 pm"
     },
@@ -42,7 +42,7 @@ defmodule AlmosquePortalV2Web.Greenish.SplitScreenView do
      |> assign(:prayer_times, @prayer_times)
      |> assign(:active_prayer_time, Enum.at(@prayer_times, 2))
      |> assign(:jummah_prayer_times, @jummah_prayer_times)
-     |> assign(:active_ads, "https://quran.com/")}
+     |> assign(:active_ads, "/images/warriors.png")}
   end
 
   def time_part(time_string) do
