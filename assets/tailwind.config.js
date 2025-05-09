@@ -11,13 +11,16 @@ module.exports = {
     "../lib/almosque_portal_v2_web.ex",
     "../lib/almosque_portal_v2_web/**/*.*ex"
   ],
-  theme: {
-    extend: {
-      colors: {
-        brand: "#FD4F00",
+    theme: {
+      extend: {
+        colors: {
+          brand: "#FD4F00",
+        },
+        fontFamily: {
+          arabic: ['Karma', 'serif']
+        },
       },
     },
-  },
   plugins: [
     require("@tailwindcss/forms"),
     // Allows prefixing tailwind classes with LiveView classes to add rules
