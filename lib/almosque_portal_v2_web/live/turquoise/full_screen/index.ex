@@ -50,11 +50,11 @@ defmodule AlmosquePortalV2Web.Turquoise.FullScreen do
   ]
 
   def mount(_params, _session, socket) do
-   
+
     active_prayer_time = Enum.find(@prayer_times, fn p -> p.namaz_name == "ASR" end)
 
-   
-   
+
+
     next_iqama_time = "9:15AM"
     next_iqama_label = "NEXT IQAMMAH IN"
     next_iqama_countdown = %{hours: 4, minutes: 0} # 4HR 0MIN
@@ -70,8 +70,8 @@ defmodule AlmosquePortalV2Web.Turquoise.FullScreen do
      |> assign(:current_time, next_iqama_time)
      |> assign(:date_string, "TUESDAY 23-23")
      |> assign(:hijri_date, "SHA'BAN 1444")
-     |> assign(:arabic_right, "إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ")
-     |> assign(:arabic_left, "كِتَابًا مَوْقُوتًا")}
+     |> assign(:arabic_right, "إِنَّ الصَّلَاةَ كَانَتْ عَلَى ")
+     |> assign(:arabic_left, "الْمُؤْمِنِينَ كِتَابًا مَوْقُوتًا ")}
   end
 
   # Extracts the time part (e.g., "5:27") from "5:27 AM"
@@ -94,5 +94,3 @@ defmodule AlmosquePortalV2Web.Turquoise.FullScreen do
     "#{h}:#{String.pad_leading("#{m}", 2, "0")}"
   end
 end
-
-
