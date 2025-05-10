@@ -3,7 +3,7 @@ defmodule AlmosquePortalV2Web.Purple.FullScreen do
 
   @prayer_times [
     %{
-      namaz_name: "FAJA",
+      namaz_name: "FAJAR",
       start_time: "04:30 am",
       iqama_time: "05:00 am"
     },

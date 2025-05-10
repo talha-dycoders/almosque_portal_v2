@@ -3,7 +3,7 @@ defmodule AlmosquePortalV2Web.Simple.SplitScreen do
 
   @prayer_times [
     %{
-      namaz_name: "FAJR",
+      namaz_name: "FAJAR",
       start_time: "3:53 am",
       iqama_time: "5:50 am"
     },

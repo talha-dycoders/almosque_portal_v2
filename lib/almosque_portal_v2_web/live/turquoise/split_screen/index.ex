@@ -1,4 +1,4 @@
-defmodule AlmosquePortalV2Web.White.SplitScreen do
+defmodule AlmosquePortalV2Web.Turquoise.SplitScreen do
   use AlmosquePortalV2Web, :live_view
 
   @prayer_times [
@@ -43,7 +43,7 @@ defmodule AlmosquePortalV2Web.White.SplitScreen do
      |> assign(:prayer_times, @prayer_times)
      |> assign(:active_prayer_time, Enum.at(@prayer_times, 2)) # Default to ASR
      |> assign(:jummah_prayer_times, @jummah_prayer_times)
-     |> assign(:active_ads, "/images/warriors.png")
+     |> assign(:active_ads, "https://quran.com/")
      |> assign(:sunrise_time, "5:44 am")
      |> assign(:sunset_time, "7:57 pm")
      |> assign(:next_iqama_time, "3:12")}

@@ -1,4 +1,5 @@
 
+
 defmodule AlmosquePortalV2Web.Turquoise.FullScreen do
   use AlmosquePortalV2Web, :live_view
 
@@ -94,5 +95,13 @@ defmodule AlmosquePortalV2Web.Turquoise.FullScreen do
     "#{h}:#{String.pad_leading("#{m}", 2, "0")}"
   end
 end
+
+
+
+
+
+
+
+
 
 
