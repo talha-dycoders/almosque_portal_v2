@@ -1,23 +1,25 @@
-<div class="w-full h-screen overflow-hidden grid grid-rows-[120px_1fr_60px] bg-[url('/images/4902963.jpg')] bg-cover bg-center font-serif">  
-    <div class="header w-full bg-beige-800 flex items-center justify-between px-12" style="box-shadow: -1px 20px 20px 20px rgba(190, 180, 160, 0.44);">
-        <div class="flex items-start gap-2 flex-col  text-green-700">
-            <h1 class="text-2xl  text-green-700 font-bold">SUNDAY, MAY 17, 2025</h1>
-            <h1 class="text-2xl  text-green-700 font-bold">10:00 AM</h1>
+<div class="w-full h-screen overflow-hidden grid grid-rows-[120px_1fr_60px]">
+    <div class="w-full h-screen overflow-hidden bg-[url('/images/4902963.jpeg')] bg-cover bg-center font-serif opacity-50 absolute top-0 left-0 z-[-1]">  
+    </div>
+    <div class="header w-full bg-beige-800 flex items-center justify-between px-12 z-10" style="box-shadow: -1px 20px 20px 20px rgba(190, 180, 160, 0.44);">
+        <div class="flex items-start gap-2 flex-col  text-stone-800">
+            <h1 class="text-2xl  text-stone-800 font-bold">SUNDAY, MAY 17, 2025</h1>
+            <h1 class="text-2xl  text-stone-800 font-bold">10:00 AM</h1>
         </div>
         <div class="h-[120px] w-[400px] bg-beige-800 rounded-2xl relative top-[35%]">
             <div class="flex items-center justify-center flex-col gap-2">
                 <div class="flex items-baseline gap-4">
-                    <h1 class=" text-green-700 text-7xl font-medium">03:00</h1>
-                    <h1 class=" text-green-700 text-4xl font-medium">PM</h1>
+                    <h1 class=" text-stone-800 text-7xl font-medium">03:00</h1>
+                    <h1 class=" text-stone-800 text-4xl font-medium">PM</h1>
                 </div>
                 <div class="flex justify-center">
-                    <h1 class="text-2xl font-medium  text-green-700">NEXT IQAMA IN : 3:12</h1>
+                    <h1 class="text-2xl font-medium  text-stone-800">NEXT IQAMA IN : 3:12</h1>
                 </div>
             </div>
         </div>
         <div class="flex items-start gap-2 flex-col ">
-            <h1 class="text-2xl text-green-700 font-bold">SUNRISE - 06:00 AM</h1>
-            <h1 class="text-2xl text-green-700 font-bold">SUNSET - 06:00 PM</h1>
+            <h1 class="text-2xl text-stone-800 font-bold">SUNRISE - 06:00 AM</h1>
+            <h1 class="text-2xl text-stone-800 font-bold">SUNSET - 06:00 PM</h1>
         </div>
     </div>  
     <div class="bg-transparent h-full grid grid-cols-3 grid-rows-2 pt-6">
@@ -26,8 +28,8 @@
         <div class="w-full h-full p-12">
                 <div class="flex items-center justify-center">
               <div class="w-[288px] h-[288px] rounded-full bg-beige-900 overflow-hidden p-1">
-                <div class="w-[280px] h-[280px] rounded-full bg-beige-900 overflow-hidden" style="border: 12px dotted #b8b09c;">
-                    <div class={["w-[270px] h-[270px] rounded-full flex flex-col items-center justify-center", if(prayer_time.namaz_name == @active_prayer_time.namaz_name, do: "bg-white text-beige-800", else: "bg-green-800 text-white")]} style="box-shadow: inset -6px -5px 18px 5px #a89d84;">
+                <div class="w-[280px] h-[280px] rounded-full bg-beige-900 overflow-hidden" style="border: 12px dotted oklch(55.3% 0.013 58.071);">
+                    <div class={["w-[270px] h-[270px] rounded-full flex flex-col items-center justify-center", if(prayer_time.namaz_name == @active_prayer_time.namaz_name, do: "bg-white text-beige-800", else: "bg-stone-800 text-white")]} style="box-shadow: inset -6px -5px 18px 5px #a89d84;">
                         <h1 class="text-2xl font-medium">STARTS</h1>
                         <div class="flex items-baseline">
                             <h1 class="text-5xl font-medium">{time_part(prayer_time.start_time)}</h1>
@@ -56,8 +58,8 @@
             </div>
             <style>
                 @keyframes marquee {
-                    0% { transform: translateX(100%); }
-                    100% { transform: translateX(-100%); }
+                    0% { transform: transtoneX(100%); }
+                    100% { transform: transtoneX(-100%); }
                 }
                 .animate-marquee {
                     animation: marquee 15s linear infinite;

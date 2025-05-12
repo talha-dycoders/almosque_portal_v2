@@ -42,7 +42,7 @@ defmodule AlmosquePortalV2Web.BeigeSimple.SplitScreen do
      |> assign(:prayer_times, @prayer_times)
      |> assign(:active_prayer_time, Enum.at(@prayer_times, 2))
      |> assign(:jummah_prayer_times, @jummah_prayer_times)
-     |> assign(:active_ads, "/images/warriors.png")}
+     |> assign(:active_ads, "https://www.quran.com/")}
   end
 
   def time_part(time_string) do

@@ -1,0 +1,182 @@
+<div class="w-full min-h-screen bg-[url('/images/simple.png')] bg-cover bg-center font-serif flex flex-col items-center justify-center relative">
+  <!-- Hexagonal Prayer Times Card -->
+  <div class="flex flex-col items-center justify-center w-full h-full min-h-screen">
+   <div class="w-full min-h-screen bg-[url('/images/simple.png')] bg-cover bg-center font-serif flex items-center justify-center">
+  <!-- Hexagon Container (reduced height) -->
+  <div class="flex flex-col items-center justify-center mx-auto" style="width: 800px; max-width: 80vw;">
+        <svg viewBox="0 0 900 750" width="100%" height="auto" class="absolute z-0" style="left: 0; top: 0;">
+          <polygon points="450,25 825,212.5 825,537.5 450,725 75,537.5 75,212.5"
+            fill="#f8f5ef" stroke="#bfa16b" stroke-width="27"/>
+          <polygon points="450,50 787.5,218.75 787.5,531.25 450,700 112.5,531.25 112.5,218.75"
+            fill="#f8f5ef" stroke="#e2cfa2" stroke-width="9"/>
+        </svg>
+    
+        <!-- Content inside hexagon -->
+       <div class="relative z-10 flex flex-col items-center justify-between px-16 py-20 w-full h-full">
+          <!-- Time and Next Iqama (INSIDE HEXAGON, TOP) -->
+          <div class="flex flex-col items-center justify-center w-full mb-7">
+            <div class="text-5xl font-medium text-[#352912] tracking-wide" id="digital-clock">
+              <span class="digital-clock-hours"><%= if String.slice(@current_time, 0, 1) == "0" && String.length(@current_time) == 7, do: String.slice(@current_time, 1, 1), else: String.slice(@current_time, 0, 2) %></span>
+              :<span class="digital-clock-minutes"><%= String.slice(@current_time, -5, 2) %></span>
+              <span class="digital-clock-am-pm text-3xl font-medium ml-1"><%= String.upcase(String.slice(@current_time, -2, 2)) %></span>
+            </div>
+            <div class="text-xl font-light text-[#352912] tracking-wide mt-1">
+              NEXT IQAMA <span class="font-semibold"><%= @next_iqama_time %></span>
+            </div>
+            <!-- Underline beneath NEXT IQAMA, width matches SUNDAY... -->
+            <div class="w-[300px] border-b-2 border-[#352912] mt-1"></div>
+            <div class="text-lg font-light text-[#352912] tracking-wide mt-1" id="today-date">
+              <%= @date_string %>
+            </div>
+          </div>
+          <!-- Custom Table Layout: 3 columns (STARTS, PRAYER NAMES, IQAMA) -->
+          <div class="w-full flex flex-col items-center justify-center my-7">
+            <div class="w-full flex flex-col items-center justify-center relative">
+              <!-- Table Header -->
+              <div class="flex flex-row w-full justify-center items-end">
+                <!-- Left Column: STARTS -->
+                <div class="flex flex-col items-end pr-8 min-w-[120px]">
+                  <div class="text-[#352912] text-2xl font-bold tracking-wide">STARTS</div>
+                  <div class="w-[6rem] border-b-2 border-[#352912] mb-2"></div>
+                </div>
+                <!-- Middle Column: (no header, just spacing) -->
+                <div class="flex flex-col items-center justify-center min-w-[200px] w-[200px]"></div>
+                <!-- Right Column: IQAMA -->
+                <div class="flex flex-col items-start pl-8 min-w-[120px]">
+                  <div class="text-[#352912] text-2xl font-bold tracking-wide">IQAMA</div>
+                  <div class="w-[6rem] border-b-2 border-[#352912] mb-2"></div>
+                </div>
+              </div>
+              <!-- Table Body -->
+              <%= for {prayer, idx} <- Enum.with_index(@prayer_times) do %>
+                <%= if prayer.namaz_name == @active_prayer_time.namaz_name do %>
+                  <!-- ASR row: single div for all columns, colored as one row -->
+                  <div class="flex flex-row w-[32vw] justify-center items-center my-1 py-1 px-2 asar-row">
+                    <!-- STARTS -->
+                    <div class="flex flex-col items-end pr-8 min-w-[120px]">
+                      <span class="flex items-baseline asar-row-text">
+                        <span class="text-2xl font-semibold"><%= time_part(prayer.start_time) %></span>
+                        <span class="text-base uppercase ml-1"><%= if prayer.namaz_name == "ZUHR", do: "PM", else: String.upcase(String.slice(prayer.start_time, -2, 2)) %></span>
+                      </span>
+                    </div>
+                    <!-- PRAYER NAME -->
+                    <div class="flex flex-col items-center justify-center min-w-[200px] w-[200px]">
+                      <span class="text-2xl font-bold tracking-wide asar-row-text"><%= prayer.namaz_name %></span>
+                    </div>
+                    <!-- IQAMA -->
+                    <div class="flex flex-col items-start pl-8 min-w-[120px]">
+                      <span class="flex items-baseline asar-row-text">
+                        <span class="text-2xl font-semibold"><%= time_part(prayer.iqama_time) %></span>
+                        <span class="text-base uppercase ml-1"><%= if prayer.namaz_name == "ISHA", do: "PM", else: String.upcase(String.slice(prayer.iqama_time, -2, 2)) %></span>
+                      </span>
+                    </div>
+                  </div>
+                <% else %>
+                  <div class="flex flex-row w-full justify-center items-center my-1 py-1 px-2">
+                    <!-- STARTS -->
+                    <div class="flex flex-col items-end pr-8 min-w-[120px]">
+                      <span class="flex items-baseline text-[#352912]">
+                        <span class="text-2xl font-semibold"><%= time_part(prayer.start_time) %></span>
+                        <span class="text-base uppercase ml-1"><%= if prayer.namaz_name == "ZUHR", do: "PM", else: String.upcase(String.slice(prayer.start_time, -2, 2)) %></span>
+                      </span>
+                    </div>
+                    <!-- PRAYER NAME -->
+                    <div class="flex flex-col items-center justify-center min-w-[200px] w-[200px]">
+                      <span class="text-2xl font-bold tracking-wide text-[#352912]"><%= prayer.namaz_name %></span>
+                    </div>
+                    <!-- IQAMA -->
+                    <div class="flex flex-col items-start pl-8 min-w-[120px]">
+                      <span class="flex items-baseline text-[#352912]">
+                        <span class="text-2xl font-semibold"><%= time_part(prayer.iqama_time) %></span>
+                        <span class="text-base uppercase ml-1"><%= if prayer.namaz_name == "ISHA", do: "PM", else: String.upcase(String.slice(prayer.iqama_time, -2, 2)) %></span>
+                      </span>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+              <!-- Jummah row -->
+              <div class="flex flex-row w-full justify-center items-center my-1 py-1 px-2">
+                <!-- STARTS -->
+                <div class="flex flex-col items-end pr-8 min-w-[120px]">
+                  <span class="flex items-baseline text-[#352912]">
+                    <span class="text-2xl font-semibold"><%= time_part(@jummah_prayer_times |> Enum.at(0) |> Map.get(:start_time)) %></span>
+                    <span class="text-base uppercase ml-1"><%= String.upcase(String.slice(@jummah_prayer_times |> Enum.at(0) |> Map.get(:start_time), -2, 2)) %></span>
+                  </span>
+                </div>
+                <!-- PRAYER NAME -->
+                <div class="flex flex-col items-center justify-center min-w-[200px] w-[200px]">
+                  <span class="text-2xl font-bold tracking-wide text-[#352912]"><%= @jummah_prayer_times |> Enum.at(0) |> Map.get(:namaz_name) %></span>
+                </div>
+                <!-- IQAMA -->
+                <div class="flex flex-col items-start pl-8 min-w-[120px]">
+                  <span class="flex items-baseline text-[#352912]">
+                    <span class="text-2xl font-semibold"><%= time_part(@jummah_prayer_times |> Enum.at(0) |> Map.get(:iqama_time)) %></span>
+                    <span class="text-base uppercase ml-1"><%= am_pm_part(@jummah_prayer_times |> Enum.at(0) |> Map.get(:iqama_time)) %></span>
+                  </span>
+                </div>
+              </div>
+              <!-- Underline beneath JUMUAH row, spanning from left to right columns -->
+                <div class="flex justify-center w-[60vw] mt-2">
+                  <div class="w-1/3 border-b-2 border-[#352912]"></div>
+                </div>
+            </div>
+          </div>
+          <!-- Sunrise and Sunset Row (INSIDE HEXAGON, BOTTOM, BELOW TABLE) -->
+          <div class="flex flex-row  items-center   relative">
+            <div class="flex flex-col items-center w-1/3">
+              <span class="text-[#bfa16b] text-lg font-semibold tracking-wide">SUNRISE</span>
+              <span class="flex items-baseline text-[#352912]">
+                <span class="text-2xl font-bold"><%= time_part(@sunrise_time) %></span>
+                <span class="text-base uppercase ml-1"><%= am_pm_part(@sunrise_time) %></span>
+              </span>
+            </div>
+            <!-- Vertical line between sunrise and sunset -->
+            <div class="flex flex-col  items-center w-1/3 relative">
+              <div class="absolute left-1/2  -translate-x-1/2 h-[4rem] border-l-2 border-[#352912]"></div>
+            </div>
+            <div class="flex flex-col items-center w-1/3">
+              <span class="text-[#bfa16b] text-lg font-semibold tracking-wide">SUNSET</span>
+              <span class="flex items-baseline text-[#352912]">
+                <span class="text-2xl font-bold"><%= time_part(@sunset_time) %></span>
+                <span class="text-base uppercase ml-1"><%= am_pm_part(@sunset_time) %></span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <style>
+          .asar-row {
+            background: #6b4a1b !important;
+          }
+          .asar-row-text {
+            color: #fff !important;
+          }
+        </style>
+      </div>
+    
+    </div>
+  </div>
+  <!-- Footer Marquee -->
+  <div class="w-full absolute bottom-0 left-0">
+    <div class="flex w-full items-baseline ">
+      <div class="flex items-center px-2 h-full w-full">
+        <div class="flex items-center justify-center gap-2 w-full h-full overflow-hidden">
+          <div class="whitespace-nowrap animate-marquee">
+            <h1 class="text-[#352912] text-3xl font-medium inline-block">As-salam-Alaikum all Muslims</h1>
+          </div>
+        </div>
+        <style>
+          @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+          }
+          .animate-marquee {
+            animation: marquee 15s linear infinite;
+          }
+        </style>
+      </div>
+      <div class="flex items-end h-full">
+        <img src="/images/logo.png" alt="logo" class="w-16 h-16 mr-8" style="filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));"/>
+      </div>
+    </div>
+  </div>
+</div>

@@ -32,6 +32,7 @@ defmodule AlmosquePortalV2Web.Router do
     live "/purple/full_screen", Purple.FullScreen
     live "/purple/split_screen", Purple.SplitScreen
 
+    live "/simple/full_screen", Simple.FullScreen
     live "/simple/split_screen", Simple.SplitScreen
 
     live "/white/full_screen", White.FullScreen
