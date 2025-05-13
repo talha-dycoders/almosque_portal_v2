@@ -73,6 +73,10 @@ defmodule AlmosquePortalV2Web.Router do
     live "/turquoise/full_screen", Turquoise.FullScreen
     live "/turquoise/split_screen", Turquoise.SplitScreen
 
+    live "/white1/full_screen", White1.FullScreen
+    live "/white1/split_screen", White1.SplitScreen
+
+
   end
 
   scope "/purple", AlmosquePortalV2Web do
