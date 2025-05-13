@@ -40,13 +40,11 @@
 </div>
 <div class="px-4 py-10 sm:px-6 sm:py-28 lg:px-8 xl:px-28 xl:py-32">
   <div class="max-w-xl mx-auto lg:mx-0">
-    <h1 class="flex items-center mt-10 text-5xl text-brand">
-      Almosque Portal V2
-    </h1>
+    <h1 class="flex items-center mt-10 text-5xl text-brand">Almosque Portal V2</h1>
 
-    <div class="flex">
+    <div class="flex mt-6">
       <div class="w-full sm:w-auto">
-        <div class="grid grid-cols-1 mt-10 gap-y-4 ">
+        <div class="grid grid-cols-1 gap-y-4">
           <a
             href="https://www.figma.com/design/YujhMRPVCtW4Mqdevkzylt/portal.islamnow?node-id=0-1&p=f&t=nwnCob9USQwIK98U-0"
             class="relative py-4 text-4xl font-semibold leading-6 underline group rounded-2xl text-zinc-900 sm:py-6"
@@ -56,249 +54,62 @@
         </div>
       </div>
     </div>
+
     <div class="w-full sm:w-auto mt-6 h-[400px] overflow-y-auto">
-      <h2 class="text-2xl font-semibold text-zinc-900 mb-4">Available Routes
-        <small class="text-sm text-zinc-500">first 17/18 themes completed. 1 incomplete theme.</small>
+      <h2 class="text-2xl font-semibold text-zinc-900 mb-4">
+        Available Routes
+        <small class="text-sm text-zinc-500">20/21 themes completed. 1 incomplete theme.</small>
       </h2>
 
       <ol class="grid grid-cols-1 gap-2 border">
 
-        <li>
-          <span class="text-lg text-brand font-semibold">Turquoise</span>
-          <ul class="ml-3">
-            <li>
-              <a href={~p"/turquoise/full_screen"} class="text-lg text-brand underline">Full Screen</a>
-            </li>
-            <li>
-              <a href={~p"/turquoise/split_screen"} class="text-lg text-brand underline">Split Screen</a>
-            </li>
-          </ul>
-        </li>
-   
-        <hr class="my-1"/>
-        <li>
-          <span class="text-lg text-brand font-semibold">Green Arabic</span>
-          <ul class="ml-3">
-            <li>
-              <a href={~p"/green_arabic/full_screen"} class="text-lg text-brand underline">Full Screen</a>
-            </li>
-            <li>
-              <a href={~p"/green_arabic/split_screen"} class="text-lg text-brand underline">Split Screen</a>
-            </li>
-          </ul>
-        </li>
-        <hr class="my-1"/>
-      
-        <li>
-          <span class="text-lg text-brand font-semibold">Gold</span>
-          <ul class="ml-3">
-            <li>
-              <a href={~p"/gold/full_screen"} class="text-lg text-brand underline">Full Screen</a>
-            </li>
-            <li>
-              <a href={~p"/gold/split_screen"} class="text-lg text-brand underline">Split Screen</a>
-            </li>
-          </ul>
-        </li>
-        <hr class="my-1"/>
+        <!-- Repeat Block for Each Theme -->
+        <%= for theme <- [
+          {"Turquoise", "turquoise"},
+          {"Green Arabic", "green_arabic"},
+          {"Gold", "gold"},
+          {"Beige Premium", "beige_premium"},
+          {"Orange", "orange"},
+          {"Maroon", "maroon"},
+          {"Green", "green"},
+          {"Blue", "blue"},
+          {"Gray Premium", "gray_premium"},
+          {"Greenish", "greenish"},
+          {"Ramadan 2024 Premium", "ramadan_2024_premium"},
+          {"Custom Colour", "customcolour"},
+          {"White", "white"},
+          {"Iqamah Only", "iqamah"},
+          {"Simple", "simple"},
+          {"Beige Simple", "beige_simple"},
+          {"Purple", "purple", [
+            {"/purple/blue_theme/full_screen", "Blue Theme Full Screen"}
+          ]},
+          {"Beige", "beige", [], ["/split_screen"]},
+          {"Dark Blue Premium", "dark_blue_premium"},
+          {"Dark Green Premium", "dark_gray_premium"},
+          {"Beuge 2023 Premium", "beige_2023_premium"}
+        ] do %>
+          <li>
+            <span class="text-lg text-brand font-semibold"><%= elem(theme, 0) %></span>
+            <ul class="ml-3">
+              <%= if length(Tuple.to_list(theme)) < 4 or Enum.member?(elem(theme, 3), "/full_screen") do %>
+                <li><a href={~p"/#{elem(theme, 1)}/full_screen"} class="text-lg text-brand underline">Full Screen</a></li>
+              <% end %>
+              <%= if length(Tuple.to_list(theme)) < 4 or Enum.member?(elem(theme, 3), "/split_screen") do %>
+                <li><a href={~p"/#{elem(theme, 1)}/split_screen"} class="text-lg text-brand underline">Split Screen</a></li>
+              <% end %>
+              <%= if length(Tuple.to_list(theme)) > 2 do %>
+                <%= for {path, label} <- elem(theme, 2) do %>
+                  <li><a href={path} class="text-lg text-brand underline"><%= label %></a></li>
+                <% end %>
+              <% end %>
+            </ul>
+          </li>
+          <hr class="my-1"/>
+        <% end %>
 
-        <li>
-          <span class="text-lg text-brand font-semibold">Beige Premium</span>
-          <ul class="ml-3">
-            <li>
-              <a href={~p"/beige_premium/full_screen"} class="text-lg text-brand underline">Full Screen</a>
-            </li>
-            <li>
-              <a href={~p"/beige_premium/split_screen"} class="text-lg text-brand underline">Split Screen</a>
-            </li>
-          </ul>
-        </li>
-        <hr class="my-1"/>
-
-        <li>
-          <span class="text-lg text-brand font-semibold">Orange</span>
-          <ul class="ml-3">
-            <li>
-              <a href={~p"/orange/full_screen"} class="text-lg text-brand underline">Full Screen</a>
-            </li>
-            <li>
-              <a href={~p"/orange/split_screen"} class="text-lg text-brand underline">Split Screen</a>
-            </li>
-          </ul>
-        </li>
-        <hr class="my-1"/> 
-
-        <li>
-          <span class="text-lg text-brand font-semibold">Maroon</span>
-          <ul class="ml-3">
-            <li>
-              <a href={~p"/maroon/full_screen"} class="text-lg text-brand underline">Full Screen</a>
-            </li>
-            <li>
-              <a href={~p"/maroon/split_screen"} class="text-lg text-brand underline">Split Screen</a>
-            </li>
-          </ul>
-        </li>
-        <hr class="my-1"/>
-
-        <li>
-          <span class="text-lg text-brand font-semibold">Green</span>
-          <ul class="ml-3">
-            <li>
-              <a href={~p"/green/full_screen"} class="text-lg text-brand underline">Full Screen</a>
-            </li>
-            <li>
-              <a href={~p"/green/split_screen"} class="text-lg text-brand underline">Split Screen</a>
-            </li>
-          </ul>
-        </li>
-        <hr class="my-1"/>
-
-        <li>
-          <span class="text-lg text-brand font-semibold">Blue</span>
-          <ul class="ml-3">
-            <li>
-              <a href={~p"/blue/full_screen"} class="text-lg text-brand underline">Full Screen</a>
-            </li>
-            <li>
-              <a href={~p"/blue/split_screen"} class="text-lg text-brand underline">Split Screen</a>
-            </li>
-          </ul>
-        </li>
-        <hr class="my-1"/>
-
-        <li>
-          <span class="text-lg text-brand font-semibold">Gray Premium</span>
-          <ul class="ml-3">
-            <li>
-              <a href={~p"/gray_premium/full_screen"} class="text-lg text-brand underline">Full Screen</a>
-            </li>
-            <li>
-              <a href={~p"/gray_premium/split_screen"} class="text-lg text-brand underline">Split Screen</a>
-            </li>
-          </ul>
-        </li>
-        <hr class="my-1"/>
-
-        <li>
-          <span class="text-lg text-brand font-semibold">Greenish</span>
-          <ul class="ml-3">
-            <li>
-              <a href={~p"/greenish/full_screen"} class="text-lg text-brand underline">Full Screen</a>
-            </li>
-            <li>
-              <a href={~p"/greenish/split_screen"} class="text-lg text-brand underline">Split Screen</a>
-            </li>
-          </ul>
-        </li>
-        <hr class="my-1"/>
-
-        <li>
-          <span class="text-lg text-brand font-semibold">Ramadan 2024 Premium</span>
-          <ul class="ml-3">
-            <li>
-              <a href={~p"/ramadan_2024_premium/full_screen"} class="text-lg text-brand underline">Full Screen</a>
-            </li>
-            <li>
-              <a href={~p"/ramadan_2024_premium/split_screen"} class="text-lg text-brand underline">Split Screen</a>
-            </li>
-          </ul>
-        </li>
-        <hr class="my-1"/>
-
-        <li>
-          <span class="text-lg text-brand font-semibold">Custom Colour</span>
-          <ul class="ml-3">
-            <li>
-              <a href={~p"/customcolour/full_screen"} class="text-lg text-brand underline">Full Screen</a>
-            </li>
-            <li>
-              <a href={~p"/customcolour/split_screen"} class="text-lg text-brand underline">Split Screen</a>
-            </li>
-          </ul>
-        </li>
-        <hr class="my-1"/>
-
-        <li>
-          <span class="text-lg text-brand font-semibold">White</span>
-          <ul class="ml-3">
-            <li>
-              <a href={~p"/white/full_screen"} class="text-lg text-brand underline">Full Screen</a>
-            </li>
-            <li>
-              <a href={~p"/white/split_screen"} class="text-lg text-brand underline">Split Screen</a>
-            </li>
-          </ul>
-        </li>
-        <hr class="my-1"/>
-        
-        <li>
-          <span class="text-lg text-brand font-semibold">Iqamah Only</span>
-          <ul class="ml-3">
-            <li>
-              <a href={~p"/iqamah/full_screen"} class="text-lg text-brand underline">Full Screen</a>
-            </li>
-            <li>
-              <a href={~p"/iqamah/split_screen"} class="text-lg text-brand underline">Split Screen</a>
-            </li>
-          </ul>
-        </li>
-        <hr class="my-1"/>
-        <li>
-          <span class="text-lg text-brand font-semibold">Simple</span>
-          <ul class="ml-3">
-            <li>
-              <a href={~p"/simple/full_screen"} class="text-lg text-brand underline">Full Screen</a>
-            </li>
-            <li>
-              <a href={~p"/simple/split_screen"} class="text-lg text-brand underline">Split Screen</a>
-            </li>
-          </ul>
-        </li>
-        <hr class="my-1"/>
-
-
-        <li>
-          <span class="text-lg text-brand font-semibold">Beige Simple</span>
-          <ul class="ml-3">
-            <li>
-              <a href={~p"/beige_simple/full_screen"} class="text-lg text-brand underline">Full Screen</a>
-            </li>
-            <li>
-              <a href={~p"/beige_simple/split_screen"} class="text-lg text-brand underline">Split Screen</a>
-            </li>
-          </ul>
-        </li>
-        <hr class="my-1"/>
-
-        <li>
-          <span class="text-lg text-brand font-semibold">Purple</span>
-          <ul class="ml-3">
-            <li>
-              <a href={~p"/purple/full_screen"} class="text-lg text-brand underline">Full Screen</a>
-            </li>
-            <li>
-              <a href={~p"/purple/split_screen"} class="text-lg text-brand underline">Split Screen</a>
-            </li>
-            <li>
-              <a href={~p"/purple/blue_theme/full_screen"} class="text-lg text-brand underline">Blue Theme Full Screen</a>
-            </li>
-          </ul>
-        </li>
-        <hr class="my-1"/>
-
-        <li>
-          <span class="text-lg text-brand font-semibold">Beige</span>
-          <ul class="ml-3">
-            <li>
-              <a href={~p"/beige/split_screen"} class="text-lg text-brand underline">Split Screen</a>
-            </li>
-          </ul>
-        </li>
-        <hr class="my-1"/>
-
-        <!-- Add more routes as they become available -->
-      </ol> 
+      </ol>
     </div>
+
   </div>
 </div>
